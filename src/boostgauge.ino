@@ -49,8 +49,7 @@ void receivePID(unsigned char __pid)
 
       case PID_ENGINE_RPM:
         if(rxBuf[2] == PID_ENGINE_RPM){
-          uint16_t rpm;
-          rpm = ((256 * rxBuf[3]) + rxBuf[4]) / 4;
+          uint16_t rpm = ((256 * rxBuf[3]) + rxBuf[4]) / 4;
           Serial.print("Engine Speed (rpm): ");
           Serial.println(rpm, DEC);
         }
@@ -58,8 +57,7 @@ void receivePID(unsigned char __pid)
 
       case PID_INTAKE_MAP:
         if(rxBuf[2] == PID_INTAKE_MAP){
-            int16_t boost;
-            boost = (rxBuf[3]/6.895)-15;
+            float boost = (rxBuf[3]/6.895)-14.7;
             Serial.print("Vacuum (psi): ");
             Serial.println(boost, DEC);
         }
